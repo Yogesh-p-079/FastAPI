@@ -1,71 +1,75 @@
-# FastAPI Product Management API
+# FastAPI Project with Oracle Database
 
 ## Overview
-This project is a **FastAPI-based Product Management API** that connects to an **Oracle Database** using SQLAlchemy and cx_Oracle.
+This project is built using **FastAPI** and connects to an **Oracle Database** for backend operations.
 
 ## Features
-- CRUD operations for Product management
-- Uses **FastAPI** for API development
-- **SQLAlchemy** ORM for database interactions
-- **Pydantic** for request validation
-- **Oracle Database** as the backend
+- FastAPI for building APIs
+- Oracle database connection using SQLAlchemy and cx_Oracle
+- CRUD operations for managing data
+- Modular structure with `main.py`, `config.py`, `database.py`, `crud.py`, `schemas.py`, and `models.py`
+- Dependency management with virtual environments
 
-## Prerequisites
-- Python 3.8 or higher
-- Oracle Database installed or accessible
+## Installation & Setup
+
+### Prerequisites
+- Python (>= 3.8)
+- Oracle Database (installed or accessible)
 - Oracle Instant Client (for cx_Oracle support)
-- Git
 
-## Installation
+### Steps to Set Up
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Yogesh-p-079/FastAPI.git
+   cd FastAPI
+   ```
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/Yogesh-p-079/your-project.git
-cd your-project
-```
+2. Run the setup script:
+   ```bash
+   chmod +x setup.sh
+   ./setup.sh
+   ```
 
-### 2. Set Up Virtual Environment
-```bash
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-```
+### Manual Setup (If Not Using setup.sh)
+1. Create a virtual environment and activate it:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # Windows: venv\Scripts\activate
+   ```
 
-### 3. Install Dependencies
-```bash
-pip install --upgrade pip
-pip install fastapi uvicorn sqlalchemy pydantic cx_Oracle
-```
+2. Install dependencies:
+   ```bash
+   pip install --upgrade pip
+   pip install fastapi uvicorn pydantic sqlalchemy cx_Oracle requests
+   ```
 
-### 4. Set Up Database Connection
-Modify `database.py` with your Oracle Database credentials:
-```python
-DATABASE_URL = "oracle+cx_oracle://username:password@localhost:1521/XEPDB1"
-```
+3. Set up the database connection in `database.py`:
+   ```python
+   DATABASE_URL = "oracle+cx_oracle://username:password@localhost:1521/XEPDB1"
+   ```
 
-### 5. Run the Application
-```bash
-uvicorn main:app --reload
-```
-API will be available at: [http://127.0.0.1:8000](http://127.0.0.1:8000)
+4. Run the FastAPI application:
+   ```bash
+   uvicorn main:app --reload
+   ```
+   The API will be available at: [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 ## Project Structure
 ```
-/your-project
+/FastAPI
 │-- main.py         # FastAPI entry point
 │-- config.py       # Configuration settings
 │-- database.py     # Database connection setup
 │-- models.py       # ORM models for SQLAlchemy
 │-- schemas.py      # Pydantic schemas for request validation
-│-- crud.py         # CRUD operations for database
+│-- crud.py         # CRUD functions for database operations
 │-- setup.sh        # Setup script
 │-- README.md       # Project documentation
 ```
 
-## API Endpoints
-- **List Products**: `GET /product/list` (with pagination)
-- **Get Product Info**: `GET /product/{pid}/info`
-- **Add Product**: `POST /product/add`
-- **Update Product**: `PUT /product/{pid}/update`
+## API Documentation
+- Swagger UI: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+- ReDoc: [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
 
 ## Troubleshooting
 - **ModuleNotFoundError: No module named 'cx_Oracle'**
